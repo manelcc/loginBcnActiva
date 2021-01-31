@@ -5,30 +5,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import es.manel.loginbcnactiva.R
-import es.manel.loginbcnactiva.databinding.LoginFragmentBinding
+import es.manel.loginbcnactiva.databinding.LoginFragmentLoginBinding
 import es.manel.loginbcnactiva.features.login.vm.MainLoginViewModel
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
-    private var _binding: LoginFragmentBinding? = null
+    private var _binding: LoginFragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewViewModel: MainLoginViewModel
+    val viewModel : MainLoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = LoginFragmentBinding.inflate(inflater, container, false)
+        _binding = LoginFragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewViewModel = ViewModelProvider(this).get(MainLoginViewModel::class.java)
+
+        binding.message.text = viewModel.getName()
 
         binding.loginBtn.setOnClickListener {
             findNavController().navigate(R.id.login_to_registred)
@@ -37,7 +42,6 @@ class LoginFragment : Fragment() {
         binding.loginBtnHome.setOnClickListener {
             findNavController().navigate(R.id.login_to_home)
         }
-
 
     }
 

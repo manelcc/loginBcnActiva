@@ -1,22 +1,16 @@
 package es.manel.loginbcnactiva.features.login.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import es.manel.loginbcnactiva.R
-import es.manel.loginbcnactiva.features.login.vm.RegistredViewModel
+import es.manel.loginbcnactiva.features.login.vm.MainLoginViewModel
 
 class RegistredFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = RegistredFragment()
-    }
-
-    private lateinit var viewModel: RegistredViewModel
-
+    val viewModel : MainLoginViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,8 +20,7 @@ class RegistredFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RegistredViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
 
 }
