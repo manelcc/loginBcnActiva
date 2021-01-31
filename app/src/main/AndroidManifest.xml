@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginBcnActiva">
+        <activity android:name=".features.login.view.activity.LoginActivity"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".features.home.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.LoginBcnActiva.NoActionBar">
             <intent-filter>
