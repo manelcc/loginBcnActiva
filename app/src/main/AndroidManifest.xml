@@ -7,18 +7,27 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginBcnActiva">
-        <activity android:name=".features.login.view.activity.LoginActivity"></activity>
+
         <activity
-            android:name=".features.home.activity.MainActivity"
+            android:name=".features.login.activity.LoginActivity"
             android:label="@string/app_name"
+            android:noHistory="true"
             android:theme="@style/Theme.LoginBcnActiva.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:label="@string/toolbar_home"
+            android:name=".features.home.activity.MainActivity"
+            android:theme="@style/Theme.LoginBcnActiva.NoActionBar">
+
         </activity>
     </application>
 

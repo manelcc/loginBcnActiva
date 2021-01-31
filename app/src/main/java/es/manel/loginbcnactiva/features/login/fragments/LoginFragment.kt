@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import es.manel.loginbcnactiva.R
-import es.manel.loginbcnactiva.features.login.view.vm.MainLoginViewModel
+import es.manel.loginbcnactiva.databinding.LoginFragmentBinding
+import es.manel.loginbcnactiva.features.login.vm.MainLoginViewModel
 
 class LoginFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
+    private var _binding: LoginFragmentBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var viewViewModel: MainLoginViewModel
 
@@ -21,13 +21,24 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.login_fragment, container, false)
+        _binding = LoginFragmentBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewViewModel = ViewModelProvider(this).get(MainLoginViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        binding.loginBtn.setOnClickListener {
+            findNavController().navigate(R.id.login_to_registred)
+        }
+
+        binding.loginBtnHome.setOnClickListener {
+            findNavController().navigate(R.id.login_to_home)
+        }
+
+
     }
 
 }

@@ -3,26 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="es.manel.loginbcnactiva.features.home.fragments.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        tools:layout="@layout/login_fragment_login"
+        android:id="@+id/loginFragment"
+        android:name="es.manel.loginbcnactiva.features.login.fragments.LoginFragment"
+        android:label="LoginFragment" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/login_to_registred"
+            app:destination="@id/registredFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            app:popUpTo="@id/loginFragment" />
+        <action
+            android:id="@+id/login_to_home"
+            app:destination="@id/mainActivity"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_close_exit" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="es.manel.loginbcnactiva.features.home.fragments.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/registredFragment"
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+        android:name="es.manel.loginbcnactiva.features.login.fragments.RegistredFragment"
+        android:label="registred_fragment"
+        tools:layout="@layout/login_fragment_registred" />
+    <activity
+        tools:layout="@layout/activity_login"
+        android:id="@+id/loginActivity"
+        android:name="es.manel.loginbcnactiva.features.login.activity.LoginActivity"
+        android:label="LoginActivity" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="es.manel.loginbcnactiva.features.home.activity.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>
