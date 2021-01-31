@@ -17,4 +17,8 @@ class MainLoginViewModel @ViewModelInject constructor(private val repo:LoginRepo
        _logIn.value = repo.fakeLogin()
    }
 
+    fun logInUser(username:String,password:String){
+        _logIn.value = repo.fakeLogin()
+    }
+
 }
