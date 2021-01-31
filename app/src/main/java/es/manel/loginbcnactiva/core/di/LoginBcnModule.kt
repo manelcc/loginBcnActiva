@@ -1,4 +1,4 @@
-package es.manel.loginbcnactiva
+package es.manel.loginbcnactiva.core.di
 
 
 import dagger.Binds
@@ -14,7 +14,6 @@ import es.manel.loginbcnactiva.core.storage.SharePersistenceImpl
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class LoginBcnModule {
-
 
     @Binds
     abstract fun bindPersistence( userServiceImpl: SharePersistenceImpl):SharePersistence

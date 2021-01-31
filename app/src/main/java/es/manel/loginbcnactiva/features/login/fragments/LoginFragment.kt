@@ -16,7 +16,10 @@ import es.app.laliguilla.core.extension.isValidPass
 import es.manel.loginbcnactiva.R
 import es.manel.loginbcnactiva.databinding.LoginFragmentLoginBinding
 import es.manel.loginbcnactiva.features.login.vm.MainLoginViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
+@ExperimentalStdlibApi
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
     private var _binding: LoginFragmentLoginBinding? = null
@@ -39,6 +42,8 @@ class LoginFragment : Fragment() {
         listenerPassword()
         listenerBtn()
     }
+
+
 
     private fun listenerBtn() {
         binding.loginBtn.setOnClickListener {
