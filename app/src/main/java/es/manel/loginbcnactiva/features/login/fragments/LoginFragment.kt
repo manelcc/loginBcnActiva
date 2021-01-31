@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import es.manel.loginbcnactiva.R
 import es.manel.loginbcnactiva.databinding.LoginFragmentLoginBinding
 import es.manel.loginbcnactiva.features.login.vm.MainLoginViewModel
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -26,22 +24,21 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = LoginFragmentLoginBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        binding.message.text = viewModel.getName()
+        binding.loginInputlayoutUsername.error = "ups hay un error"
 
-        binding.loginBtn.setOnClickListener {
-            findNavController().navigate(R.id.login_to_registred)
-        }
 
-        binding.loginBtnHome.setOnClickListener {
-            findNavController().navigate(R.id.login_to_home)
-        }
+       viewModel.logIn.observe(viewLifecycleOwner, {
+           when(it){
+               true -> findNavController().navigate(R.id.login_to_home)
+           }
+       })
+
 
     }
 

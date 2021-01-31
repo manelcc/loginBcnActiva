@@ -6,4 +6,7 @@ import javax.inject.Inject
 class LoginRepository @Inject constructor(private val persistence:SharePersistence){
 
     fun nameUser() : String = persistence.readUser()
+
+
+    fun fakeLogin():Boolean = persistence.fakeLogin("manel","1234")
 }
