@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        tools:layout="@layout/login_fragment_login"
+        android:id="@+id/loginFragment"
+        android:name="es.manel.loginbcnactiva.features.login.fragments.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/login_to_registred"
+            app:destination="@id/registredFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            app:popUpTo="@id/loginFragment" />
+        <action
+            android:id="@+id/login_to_home"
+            app:destination="@id/mainActivity"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_close_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/registredFragment"
+
+        android:name="es.manel.loginbcnactiva.features.login.fragments.RegistredFragment"
+        android:label="registred_fragment"
+        tools:layout="@layout/login_fragment_registred" />
+    <activity
+        tools:layout="@layout/activity_login"
+        android:id="@+id/loginActivity"
+        android:name="es.manel.loginbcnactiva.features.login.activity.LoginActivity"
+        android:label="LoginActivity" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="es.manel.loginbcnactiva.features.home.activity.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>
