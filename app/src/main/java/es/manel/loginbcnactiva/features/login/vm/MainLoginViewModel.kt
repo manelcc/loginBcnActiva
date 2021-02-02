@@ -30,11 +30,8 @@ class MainLoginViewModel @ViewModelInject constructor(private val repo: LoginRep
     fun logInUser(username:String, password:String){
         viewModelScope.launch {
             repo.postLogin(username, password)
-                .catch {
-                    Log.e("manel","error "+it.message)
-                    _logIn.value = false }
+                .catch { _logIn.value = false }
                 .collect { _logIn.value = it }
-
         }
     }
 
