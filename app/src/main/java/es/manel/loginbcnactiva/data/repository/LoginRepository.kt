@@ -15,7 +15,7 @@ class LoginRepository @Inject constructor(
     fun nameUser(): String = persistence.readUser()
 
 
-    fun fakeLogin(): Boolean = persistence.fakeLogin("manel", "1234")
+    fun fakeLogin(): Boolean = persistence.fakeLogin("userName", "1234")
 
     @ExperimentalStdlibApi
     fun postLogin(username:String, password:String): Flow<Boolean> {
